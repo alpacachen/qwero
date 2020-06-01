@@ -3,7 +3,7 @@ import Home from './pages/home'
 import NotFound from './pages/404'
 import animate4phaser from './pages/animate4phaser'
 const routes = {
-  '/': Home,
+  '#/': Home,
   '#/animate4phaser':animate4phaser
 }
 
@@ -15,7 +15,11 @@ new Vue({
   },
   computed: {
     ViewComponent () {
-      return routes[this.currentRoute] || NotFound
+      let hash = this.currentRoute;
+      if(!hash){
+        hash = '#/'
+      }
+      return routes[hash] || NotFound
     }
   },
   render (h) { return h(this.ViewComponent) }

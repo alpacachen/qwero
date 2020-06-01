@@ -6,7 +6,7 @@
       <div class="bottom"></div>
     </div>
     <div style="overflow: hidden;">
-      <p><a class="link" href="#/animate4phaser">/animate4phaser</a></p>
+      <p><a class="link" target="_blank" href="#/animate4phaser">/animate4phaser</a></p>
     </div>
   </div>
 </template>
