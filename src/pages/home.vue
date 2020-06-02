@@ -7,6 +7,7 @@
     </div>
     <div style="overflow: hidden;">
       <p><a class="link" target="_blank" href="#/animate4phaser">/animate4phaser</a></p>
+      <p><a class="link" target="_blank" href="#/spinePlayerPage">/spinePlayerPage</a></p>
     </div>
   </div>
 </template>
