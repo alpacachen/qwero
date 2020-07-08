@@ -1390,10 +1390,10 @@ animate.css@^4.1.0:
   resolved "https://npm.pri.ibanyu.com/animate.css/-/animate.css-4.1.0.tgz#dec2aabe4babfc6f6777f9a5cccd132838729b50"
   integrity sha1-3sKqvkur/G9nd/mlzM0TKDhym1A=
 
-animate4phaser@^1.0.2:
-  version "1.0.2"
-  resolved "https://npm.pri.ibanyu.com/animate4phaser/-/animate4phaser-1.0.2.tgz#7df13f5d6b3bce6172eb9eb27ca4c74109f9fdcd"
-  integrity sha1-ffE/XWs7zmFy656yfKTHQQn5/c0=
+animate4phaser@^1.0.5:
+  version "1.0.5"
+  resolved "https://npm.pri.ibanyu.com/animate4phaser/-/animate4phaser-1.0.5.tgz#e8cf5f538c4c80548e92b90257248c55dd9d4dbc"
+  integrity sha1-6M9fU4xMgFSOkrkCVySMVd2dTbw=
   dependencies:
     "@babel/core" "^7.10.2"
     animate.css "^4.1.0"
@@ -7363,10 +7363,10 @@ spdy@^4.0.2:
     select-hose "^2.0.0"
     spdy-transport "^3.0.0"
 
-spineplayer@^1.0.0:
-  version "1.0.0"
-  resolved "https://npm.pri.ibanyu.com/spineplayer/-/spineplayer-1.0.0.tgz#858e6158efce44426d716e6d0bb0e1f5667c1440"
-  integrity sha1-hY5hWO/OREJtcW5tC7Dh9WZ8FEA=
+spineplayer@^1.0.6:
+  version "1.0.6"
+  resolved "https://npm.pri.ibanyu.com/spineplayer/-/spineplayer-1.0.6.tgz#c55bdce96a6ffe2a9a529a538b67ac678c6f63d8"
+  integrity sha1-xVvc6Wpv/iqaUppTi2esZ4xvY9g=
   dependencies:
     "@babel/core" "^7.9.0"
     babel-loader "^8.1.0"
