@@ -3,10 +3,12 @@ import Home from './pages/home'
 import NotFound from './pages/404'
 import animate4phaser from './pages/animate4phaser'
 import spinePlayerPage from "./pages/spineplayer";
+import coconut from "./pages/coconut";
 const routes = {
   '#/': Home,
   '#/animate4phaser':animate4phaser,
   '#/spinePlayerPage':spinePlayerPage,
+  '#/coconut':coconut,
 }
 
 Vue.config.productionTip = false
