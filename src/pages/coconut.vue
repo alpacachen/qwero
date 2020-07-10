@@ -39,6 +39,7 @@
             <img style="width: 300px;margin: auto;" class="block" :src="dataUrl" />
         </div>
         <button @click="createPost">{{preview?'返回编辑':'预览'}}</button>
+
     </div>
 </template>
 <script>
@@ -53,6 +54,9 @@
         },
         methods:{
              async createPost(){
+                 window.pageYoffset = 0;
+                 document.documentElement.scrollTop = 0;
+                 document.body.scrollTop = 0;
                  if(!this.preview){
                      let canvas = await html2canvas(this.$refs.ys);
                      this.dataUrl = canvas.toDataURL("image/png",1);
@@ -66,6 +70,7 @@
 </script>
 <style lang="less">
     .wrap{
+        padding-bottom: 24px;
         .block{
             display: block;
         }

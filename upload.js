@@ -25,10 +25,10 @@ let client = new OSS({
     // ]
     let list = await getList();
     // 删除旧文件
-    list.forEach(async (file)=>{
-        await client.delete(file.name)
-        console.log('删除文件'+file.name);
-    });
+    for (let i = 0; i < list.length; i++) {
+        await client.delete(list[i].name)
+        console.log('删除文件'+list[i].name);
+    }
     // 上传新的
     recursive('dist',function (err,files) {
         files.forEach(filePath => {
