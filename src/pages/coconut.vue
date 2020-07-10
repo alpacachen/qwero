@@ -1,7 +1,7 @@
 <template>
     <div class="wrap">
         <div v-show="!preview">
-            点击文字进行编辑
+            <p>点击文字进行编辑</p>
             <div ref="ys" id="yeshu" style="width: 300px;">
                 <div class="yeshu-center">
                     <div class="yeshu-title" contenteditable="true">
@@ -35,7 +35,7 @@
             </div>
         </div>
         <div v-show="preview">
-            长按/右键保存至本地
+            <p style="color: orangered">长按/右键保存至本地</p>
             <img style="width: 300px;margin: auto;" class="block" :src="dataUrl" />
         </div>
         <button @click="createPost">{{preview?'返回编辑':'预览'}}</button>
@@ -60,14 +60,6 @@
                  }else {
                      this.preview = false
                  }
-                // let image = new Image();
-                // image.src = canvas.toDataURL("image/png",1);
-                // let oA = document.createElement("a");
-                // oA.download = '';
-                // oA.href = canvas.toDataURL("image/png",1);
-                // document.body.appendChild(oA);
-                // oA.click();
-                // oA.remove();
             }
         }
     }

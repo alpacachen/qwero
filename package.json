@@ -10,7 +10,7 @@
   "dependencies": {
     "animate4phaser": "^1.0.5",
     "core-js": "^3.6.5",
-    "html2canvas": "^1.0.0-rc.5",
+    "html2canvas": "1.0.0-rc.4",
     "less-loader": "^6.2.0",
     "phaser": "^3.23.0",
     "spineplayer": "^1.0.6",
