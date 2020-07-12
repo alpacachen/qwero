@@ -1,30 +1,22 @@
-import Vue from 'vue'
-import Home from './pages/home'
-import NotFound from './pages/404'
-import animate4phaser from './pages/animate4phaser'
-import spinePlayerPage from "./pages/spineplayer";
-import coconut from "./pages/coconut";
-const routes = {
-  '#/': Home,
-  '#/animate4phaser':animate4phaser,
-  '#/spinePlayerPage':spinePlayerPage,
-  '#/coconut':coconut,
-}
+import Vue from 'vue/dist/vue.js'
+import VueRouter from 'vue-router'
+const Home = () => import('./pages/home')
+const animate4phaser = () => import('./pages/animate4phaser')
+const spinePlayerPage = () => import('./pages/spineplayer')
+const coconut = () => import('./pages/coconut')
+Vue.use(VueRouter)
+const routes = [
+  { path: '/', component: Home },
+  { path: '/animate4phaser', component: animate4phaser },
+  { path: '/spinePlayerPage', component: spinePlayerPage },
+  { path: '/coconut', component: coconut },
+]
+const router = new VueRouter({
+  routes // (缩写) 相当于 routes: routes
+})
 
 Vue.config.productionTip = false
 
 new Vue({
-  data: {
-    currentRoute: window.location.hash
-  },
-  computed: {
-    ViewComponent () {
-      let hash = this.currentRoute;
-      if(!hash){
-        hash = '#/'
-      }
-      return routes[hash] || NotFound
-    }
-  },
-  render (h) { return h(this.ViewComponent) }
+  router,
 }).$mount('#app')

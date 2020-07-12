@@ -6,9 +6,15 @@
       <div class="bottom"></div>
     </div>
     <div style="overflow: hidden;">
-      <p><a class="link" target="_blank" href="#/animate4phaser">/animate4phaser</a></p>
-      <p><a class="link" target="_blank" href="#/spinePlayerPage">/spinePlayerPage</a></p>
-      <p><a class="link" target="_blank" href="#/coconut">/coconut</a></p>
+      <p>
+        <router-link to="/animate4phaser">animate4phaser</router-link>
+      </p>
+      <p>
+        <router-link to="/spinePlayerPage">spinePlayerPage</router-link>
+      </p>
+      <p>
+        <router-link to="/coconut">coconut</router-link>
+      </p>
     </div>
   </div>
 </template>
@@ -21,7 +27,6 @@ export default {
 
 <style scoped>
 .link{
-  color: #ffffff;
   font-size: 20px;
   font-weight: bolder;
 }
@@ -31,7 +36,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background: #000000;
   height: 100vh;
   overflow: hidden;
   margin: 0;
