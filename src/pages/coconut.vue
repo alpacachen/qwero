@@ -166,11 +166,14 @@
                         margin: auto;
                         bottom: 0;
                         right: 0;
+                        z-index: 0;
                         pointer-events: none;
                     }
                     .bottom{
                         text-align: left;
                         margin-bottom: 8px;
+                        position: relative;
+                        z-index: 1;
                         .text{
                             font-size: 30px;
                             width: 30px;
@@ -186,6 +189,8 @@
                     .top{
                         display: flex;
                         padding: 4px 0;
+                        position: relative;
+                        z-index: 1;
                         .text1{
                             color: #ffffff;
                             font-size: 14px;
