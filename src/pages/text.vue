@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>文案：<input @blur="blur" v-model="text" placeholder="请输入文字" /></p>
-    <p>间隔：<input v-model="gap" type="number" /></p>
+    <p>间隔：<input @blur="blur" v-model="gap" type="number" /></p>
     <canvas hidden="hidden" width="10000" ref="canvas"></canvas>
     <br />
     <canvas ref="canvas2" :width="width"></canvas>
@@ -13,7 +13,7 @@
       this.position = position;
       this.context2 = context2;
       this.randomX = Math.random()*1000;
-      this.randomY = this.position.y + Math.random()*1000;
+      this.randomY = Math.random()*1000;
       this.startX = this.position.x + this.randomX;
       this.startY = this.position.y + this.randomY;
       this.duration = duration;

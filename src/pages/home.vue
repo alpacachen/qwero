@@ -18,6 +18,9 @@
       <p>
         <router-link to="/text">text</router-link>
       </p>
+<!--      <p>-->
+<!--        <router-link to="/404">text</router-link>-->
+<!--      </p>-->
     </div>
   </div>
 </template>
