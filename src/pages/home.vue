@@ -15,6 +15,9 @@
       <p>
         <router-link to="/coconut">coconut</router-link>
       </p>
+      <p>
+        <router-link to="/text">text</router-link>
+      </p>
     </div>
   </div>
 </template>

@@ -15,8 +15,9 @@
     "less-loader": "^6.2.0",
     "phaser": "^3.23.0",
     "recursive-readdir": "^2.2.2",
-    "spineplayer": "^1.0.6",
-    "vue": "^2.6.11"
+    "spineplayer": "1.0.7",
+    "vue": "^2.6.11",
+    "vue-router": "^3.4.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",

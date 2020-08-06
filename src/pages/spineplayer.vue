@@ -6,6 +6,10 @@
         </div>
         <div v-if="body1Loaded && body2Loaded">
             <button class="button" @click="changeStatus">{{playStatus?'pause':'resume'}}</button>
+            <br />
+            <button class="button" @click="remove" >remove</button>
+            <br />
+<!--            <button class="button" @click="reduceFramerate">reduceFramerate</button>-->
         </div>
     </div>
 </template>
@@ -31,7 +35,8 @@
                 parent: this.$refs['3-7'],
                 pngUrl:spine3_7.png,
                 atlasUrl:spine3_7.atlas,
-                jsonUrl:spine3_7.json
+                jsonUrl:spine3_7.json,
+                reduceFramerate:true,
             })
             body1.on('loaded',()=>{
                 this.body1Loaded = true
@@ -42,7 +47,8 @@
                 parent: this.$refs['3-8'],
                 pngUrl:spine3_8.png,
                 atlasUrl:spine3_8.atlas,
-                jsonUrl:spine3_8.json
+                jsonUrl:spine3_8.json,
+                reduceFramerate:true,
             })
             body2.on('loaded',()=>{
                 this.body2Loaded = true
@@ -51,6 +57,17 @@
             })
         },
         methods:{
+            reduceFramerate(){
+                console.log('reduceFramerate');
+            },
+            remove(){
+                if(body1 && body2){
+                    body1.remove();
+                    body1 = null;
+                    body2.remove();
+                    body2 = null;
+                }
+            },
             changeStatus(){
                 if(this.playStatus){
                     body1.pause()
@@ -66,7 +83,7 @@
 </script>
 <style scoped>
     .button{
-        width: 5rem;
+        min-width: 5rem;
     }
     .wrap{
         display: flex;
