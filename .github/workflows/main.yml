@@ -28,7 +28,7 @@ jobs:
 
      # Runs a single command using the runners shell
     - name: update Dependence
-      run: ll    
+      run: ls
     # Runs a single command using the runners shell
     - name: update Dependence
       run: |
