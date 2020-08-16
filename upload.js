@@ -37,7 +37,9 @@ let client = new OSS({
             const filePath = files[index];
             const file = fs.readFileSync(filePath);
             const filename = filePath.replace('dist/','')
+            console.time();
             await putObject(file, filename);
+            console.timeEnd()
             console.log('第'+(index+1)+'文件上传成功'+ filename);
         }
         // process.exit();
