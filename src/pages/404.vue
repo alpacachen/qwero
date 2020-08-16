@@ -1,5 +1,6 @@
 <template>
 <div>
+    111222
     <canvas ref="canvas"></canvas>
 </div>
 </template>
