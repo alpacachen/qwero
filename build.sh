@@ -6,3 +6,4 @@ npm run build
 
 echo 发布
 node ./upload.js
+echo 发布完成
