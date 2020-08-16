@@ -1,6 +1,6 @@
 <template>
 <div>
-    111222
+    111222333
     <canvas ref="canvas"></canvas>
 </div>
 </template>
