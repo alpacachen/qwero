@@ -3,3 +3,6 @@ npm install
 
 echo 打包
 npm run build
+
+echo 发布
+node ./upload.js

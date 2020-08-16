@@ -1,7 +1,7 @@
 .DS_Store
 node_modules
 /dist
-oss.js
+# oss.js
 
 # local env files
 .env.local
