@@ -39,14 +39,14 @@ let client = new OSS({
             await putObject(file, filename);
             console.log('第'+(index+1)+'文件上传成功'+ filename);
         }
-        process.exit();
+        // process.exit();
     })
 })()
 
 async function putObject (file,fileDir) {
     try {
         // object-key可以自定义为文件名（例如file.txt）或目录（例如abc/test/file.txt）的形式，实现将文件上传至当前Bucket或Bucket下的指定目录。
-        client.put(fileDir, file);
+        return client.put(fileDir, file);
     } catch (e) {
         console.log(e);
     }
