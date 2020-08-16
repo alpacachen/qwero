@@ -7,6 +7,7 @@ let client = new OSS({
     accessKeyId: oss.AccessKey,
     accessKeySecret: oss.SECRET,
     bucket: oss.bucket,
+    timeout: 300000,
 });
 (async function() {
     console.log('开始同步OSS=============================')
