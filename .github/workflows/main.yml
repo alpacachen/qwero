@@ -33,7 +33,7 @@ jobs:
     # Runs a set of commands using the runners shell
     - name: build
       run: |
-        vue-cli-service build,
+        npm run-script build,
         echo build 成功,
         node upload.js
         echo 发布 成功,
