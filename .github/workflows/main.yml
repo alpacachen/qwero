@@ -28,7 +28,7 @@ jobs:
 
      # Runs a single command using the runners shell
     - name: ls
-      run: ls
+      run: cat package.json
     # Runs a single command using the runners shell
     - name: update Dependence
       run: |
