@@ -7,7 +7,6 @@ let client = new OSS({
     accessKeyId: oss.AccessKey,
     accessKeySecret: oss.SECRET,
     bucket: oss.bucket,
-    timeout: 60000,
 });
 (async function() {
     console.log('开始同步OSS=============================')
@@ -31,14 +30,16 @@ let client = new OSS({
         console.log('删除文件'+list[i].name);
     }
     // 上传新的
-    recursive('dist',function (err,files) {
-        files.forEach(filePath => {
-            fs.readFile(filePath,async function (err, file) {
-                let filename = filePath.replace('dist/','')
-                await putObject(file, filename)
-                console.log('上传文件'+ filename);
-            })
-        })
+    recursive('dist',async function (err,files) {
+        console.log(`共有${files.length}个文件`);
+        for (let index = 0; index < files.length; index++) {
+            const filePath = files[index];
+            const file = fs.readFileSync(filePath);
+            const filename = filePath.replace('dist/','')
+            await putObject(file, filename);
+            console.log('第'+(index+1)+'文件上传成功'+ filename);
+        }
+        process.exit();
     })
 })()
 
@@ -52,5 +53,5 @@ async function putObject (file,fileDir) {
 }
 async function getList() {
     let res = await client.list()
-    return res.objects;
+    return res.objects || [];
 }
