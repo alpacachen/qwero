@@ -1,10 +1,6 @@
 <template>
   <div id="app">
-    <div class="heart">
-      <div class="topLeft"></div>
-      <div class="topRight"></div>
-      <div class="bottom"></div>
-    </div>
+    <div id="svg"></div>
     <div style="overflow: hidden;">
       <p>
         <router-link to="/animate4phaser">animate4phaser</router-link>
@@ -21,21 +17,72 @@
       <p>
         <router-link to="/formDemo">formDemo</router-link>
       </p>
-<!--      <p>-->
-<!--        <router-link to="/404">text</router-link>-->
-<!--      </p>-->
+      <!--      <p>-->
+      <!--        <router-link to="/404">text</router-link>-->
+      <!--      </p>-->
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "App"
+  name: "App",
+  mounted() {
+    let s = window.Snap().attr({
+      viewBox: "0 0 100 100",
+    });
+    document.getElementById("svg").appendChild(s.node);
+    let pathData = [];
+    for (let i = 0; i <= 20; i++) {
+      if (i < 4 || i > 16) {
+        pathData.push(5 * i, 50);
+      } else {
+        let y = 50 + (i % 2 ? 1 : -1) * Math.random() * 25;
+        pathData.push(5 * i, y);
+      }
+    }
+    let pathString = "";
+    for (let index = 0; index < pathData.length; index += 2) {
+      pathString += `${index ? "L" : "M"} ${pathData[index]} ${
+        pathData[index + 1]
+      }`;
+    }
+    let p = s.path(pathString).attr({
+      stroke: "pink",
+      fill: "white",
+    });
+
+    let circle = s.circle(0, 50, 1).attr({ fill: "white" });
+    var length = window.Snap.path.getTotalLength(p);
+    function loop() {
+      window.Snap.animate(
+        0,
+        length,
+        function (val) {
+          var point = window.Snap.path.getPointAtLength(p, val);
+          circle.attr({
+            cx: point.x,
+            cy: point.y,
+          });
+        },
+        3000,
+        window.mina.ease,
+        loop
+      );
+    }
+    loop()
+  },
 };
 </script>
 
 <style scoped>
-.link{
+#svg {
+  width: 400px;
+  height: 400px;
+  border: 1px solid;
+  margin: auto;
+}
+.link {
   font-size: 20px;
   font-weight: bolder;
 }
