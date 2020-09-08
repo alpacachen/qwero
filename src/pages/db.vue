@@ -15,6 +15,7 @@
     ></el-alert>
     <el-button type="primary" @click="addComment">添加评论</el-button>
     <el-button @click="changeName">随机昵称</el-button>
+    <p class="tips">修改完了刷新看看</p>
   </div>
 </template>
 <script>
@@ -86,6 +87,10 @@ export default {
 };
 </script>
 <style scoped>
+.tips{
+  color: gray;
+  font-size: 12px;
+}
 .head {
   margin: 6px 0;
   display: flex;
