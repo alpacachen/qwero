@@ -17,6 +17,9 @@
       <p>
         <router-link to="/formDemo">formDemo</router-link>
       </p>
+      <p>
+        <router-link to="/sticky">sticky</router-link>
+      </p>
       <!--      <p>-->
       <!--        <router-link to="/404">text</router-link>-->
       <!--      </p>-->
