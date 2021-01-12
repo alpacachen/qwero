@@ -64,6 +64,8 @@ export default {
 <style scoped>
 .shadow {
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14); /*firefox*/
+  -webkit-box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14); /*safari或chrome*/
 }
 .m-2 {
   margin: 2em;
