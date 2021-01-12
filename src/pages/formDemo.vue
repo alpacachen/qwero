@@ -20,6 +20,7 @@ export default {
       formData: {
         name: "陈",
         age: 26,
+        desc: 'ASFSAFSAF',
         working: false,
         marrStatus: 2,
         date: new Date('1995-11-20'),
@@ -29,6 +30,14 @@ export default {
           tag: "input",
           model: "name",
           label: "姓名",
+        },
+        {
+          tag: "input",
+          model: "desc",
+          label: "介绍",
+          attrs:{
+            type: 'textarea'
+          }
         },
         {
           tag: "input-number",
