@@ -24,6 +24,8 @@ const db = () =>
     import('./pages/db')
 const sticky = () =>
     import('./pages/sticky')
+const kejian = () =>
+    import('./pages/kejian')
 const routes = [
     { path: '/', component: Home },
     { path: '/animate4phaser', component: animate4phaser },
@@ -34,6 +36,7 @@ const routes = [
     { path: '/formDemo', component: formDemo },
     { path: '/db', component: db },
     { path: '/sticky', component: sticky },
+    { path: '/kejian', component: kejian },
 ]
 const router = new VueRouter({
     routes // (缩写) 相当于 routes: routes

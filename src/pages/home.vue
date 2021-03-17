@@ -20,6 +20,9 @@
       <p>
         <router-link to="/sticky">sticky</router-link>
       </p>
+      <p>
+        <router-link to="/kejian">kejian</router-link>
+      </p>
       <!--      <p>-->
       <!--        <router-link to="/404">text</router-link>-->
       <!--      </p>-->
