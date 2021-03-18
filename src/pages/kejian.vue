@@ -1,5 +1,6 @@
 <template>
   <div class="bg">
+    <!-- 女朋友面试小学数学主讲需要课件，但是我俩都不会做ppt，所以用代码帮写了一个，时间很仓促，此代码不代表我真实水平，懒得优化了😓 -->
     <div class="inner">
       <div class="tags-containter">
         <el-tag
@@ -7,6 +8,17 @@
           @close="removeLine(idx)"
           closable
           v-for="(item, idx) in lines"
+          :key="`${item[0]}${item[1]}`"
+          >{{ imgList[item[0]].name }}-{{ imgList[item[1]].name }}</el-tag
+        >
+      </div>
+      <div class="tags-containter-bottom">
+        <el-tag
+          type="danger"
+          style="margin: 4px; font-size: 20px"
+          @close="removeLine(idx, 'bottom')"
+          closable
+          v-for="(item, idx) in bottomLines"
           :key="`${item[0]}${item[1]}`"
           >{{ imgList[item[0]].name }}-{{ imgList[item[1]].name }}</el-tag
         >
@@ -19,9 +31,25 @@
               left: points.left,
               width: points.width,
               height: points.height,
+              borderColor: points.borderColor,
             }"
             :key="`${idx}-line`"
             class="lines"
+          ></div>
+        </transition-group>
+      </div>
+      <div class="zz-bottom">
+        <transition-group name="list" tag="p">
+          <div
+            v-for="(points, idx) in bottomLinesTran"
+            :style="{
+              left: points.left,
+              width: points.width,
+              height: points.height,
+              borderColor: points.borderColor,
+            }"
+            :key="`${idx}-bottomLine`"
+            class="lines-bottom"
           ></div>
         </transition-group>
       </div>
@@ -32,12 +60,6 @@
           @click="select(idx, item.name)"
           >{{ item.name }}</span
         >
-        <!-- <img
-          :ref="`fruit${idx}`"
-          :class="{ fruit: true, selected: currentIdxs.includes(idx) }"
-          :src="item.url"
-          @click="select(idx, item.name)"
-        /> -->
       </span>
     </div>
   </div>
@@ -49,24 +71,29 @@ export default {
     return {
       currentIdxs: [],
       lines: [],
+      bottomLines: [],
       imgList: [
         {
           name: "🍎",
+          color: "red",
           url:
             "https://qnyedu-qd.cdn.ipalfish.com/edu/courseware/undefined/4402df5ddd94d1da2e0757366d67888a.png",
         },
         {
           name: "🍌",
+          color: "lightyellow",
           url:
             "https://qnyedu-qd.cdn.ipalfish.com/edu/courseware/undefined/06d02b693c0d503e76a79bd8d10be4fb.png",
         },
         {
           name: "🍐",
+          color: "lightgreen",
           url:
             "https://qnyedu-qd.cdn.ipalfish.com/edu/courseware/undefined/4f2843372d3b7285037ed7076d56f85f.png",
         },
         {
           name: "🍉",
+          color: "green",
           url:
             "https://qnyedu-qd.cdn.ipalfish.com/edu/courseware/undefined/ff0224a93349192a7aa65d8a2292f089.png",
         },
@@ -82,30 +109,61 @@ export default {
           left: Math.min(first, second) + 50 + "px",
           width: Math.abs(first - second) + "px",
           height: Math.abs(points[1] - points[0]) * 100 + "px",
+          borderColor: this.imgList[points[0]].color,
+        };
+      });
+    },
+    bottomLinesTran() {
+      return this.bottomLines.map((points) => {
+        const first = this.$refs[`fruit${points[0]}`][0].offsetLeft;
+        const second = this.$refs[`fruit${points[1]}`][0].offsetLeft;
+        return {
+          left: Math.min(first, second) + 50 + "px",
+          width: Math.abs(first - second) + "px",
+          height: Math.abs(points[1] - points[0]) * 100 + "px",
+          borderColor: this.imgList[points[0]].color,
         };
       });
     },
   },
   mounted() {},
   methods: {
-    removeLine(idx) {
-      const temp = [...this.lines];
-      temp.splice(idx, 1);
-      this.lines = [...temp];
+    removeLine(idx, type) {
+      if (type === "bottom") {
+        const temp = [...this.bottomLines];
+        temp.splice(idx, 1);
+        this.bottomLines = [...temp];
+      } else {
+        const temp = [...this.lines];
+        temp.splice(idx, 1);
+        this.lines = [...temp];
+      }
     },
     select(idx) {
       if (this.currentIdxs.includes(idx)) {
         return;
       }
-      this.currentIdxs = [...this.currentIdxs, idx].sort();
+      this.currentIdxs = [...this.currentIdxs, idx];
       if (this.currentIdxs.length === 2) {
-        const hasLine = this.lines.some(
-          (item) => JSON.stringify(item) === JSON.stringify(this.currentIdxs)
-        );
-        setTimeout(() => {
-          !hasLine && this.lines.push([...this.currentIdxs]);
-          this.currentIdxs = [];
-        }, 200);
+        if (this.currentIdxs[0] < this.currentIdxs[1]) {
+          // 上面
+          const hasLine = this.lines.some(
+            (item) => JSON.stringify(item) === JSON.stringify(this.currentIdxs)
+          );
+          setTimeout(() => {
+            !hasLine && this.lines.push([...this.currentIdxs]);
+            this.currentIdxs = [];
+          }, 200);
+        } else {
+          // 下面
+          const hasLine = this.bottomLines.some(
+            (item) => JSON.stringify(item) === JSON.stringify(this.currentIdxs)
+          );
+          setTimeout(() => {
+            !hasLine && this.bottomLines.push([...this.currentIdxs]);
+            this.currentIdxs = [];
+          }, 200);
+        }
       }
     },
   },
@@ -114,7 +172,12 @@ export default {
 <style scoped>
 .tags-containter {
   position: absolute;
-  top: -70px;
+  top: -90px;
+  font-size: 36px;
+}
+.tags-containter-bottom {
+  position: absolute;
+  top: -50px;
   font-size: 36px;
 }
 .zz {
@@ -123,6 +186,14 @@ export default {
   height: 45%;
   overflow: hidden;
   pointer-events: none;
+}
+.zz-bottom {
+  position: absolute;
+  width: 100%;
+  height: 45%;
+  overflow: hidden;
+  pointer-events: none;
+  bottom: 0;
 }
 .bg {
   height: 100vh;
@@ -156,6 +227,16 @@ export default {
   border-color: red;
   border-style: dashed;
   top: 100%;
+  margin: auto;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+.lines-bottom {
+  position: absolute;
+  border-radius: 100%;
+  border-color: red;
+  border-style: dashed;
+  top: 0%;
   margin: auto;
   pointer-events: none;
   transform: translateY(-50%);
