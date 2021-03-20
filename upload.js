@@ -25,6 +25,7 @@ let client = new OSS({
     //     },
     // ]
     let list = await getList();
+    list = list.filter(file => !(/^react\/.*/.test(file.name)))
     // 删除旧文件
     for (let i = 0; i < list.length; i++) {
         await client.delete(list[i].name)

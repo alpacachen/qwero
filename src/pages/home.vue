@@ -3,6 +3,9 @@
     <div id="svg"></div>
     <div style="overflow: hidden;">
       <p>
+        <router-link to="http://www.qwero.cn/react/index.html">可达鸭</router-link>
+      </p>
+      <p>
         <router-link to="/animate4phaser">animate4phaser</router-link>
       </p>
       <p>

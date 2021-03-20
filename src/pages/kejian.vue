@@ -61,6 +61,8 @@
           >{{ item.name }}</span
         >
       </span>
+      <div class="arrow" style="left: 20px">--------></div>
+      <div class="arrow" style="transform: rotate(180deg);right: 20px; bottom: 0">--------></div>
     </div>
   </div>
 </template>
@@ -170,6 +172,11 @@ export default {
 };
 </script>
 <style scoped>
+.arrow{
+  position: absolute;
+  font-size: 38px;
+  letter-spacing: -4px;
+}
 .tags-containter {
   position: absolute;
   top: -90px;
