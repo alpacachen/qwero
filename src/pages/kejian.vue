@@ -54,6 +54,7 @@
         </transition-group>
       </div>
       <span class="fruit" v-for="(item, idx) in imgList" :key="idx">
+        <i class="text-i">{{idx + 1}}</i>
         <span
           :ref="`fruit${idx}`"
           :class="{ selected: currentIdxs.includes(idx) }"
@@ -63,7 +64,27 @@
       </span>
       <div class="arrow" style="left: 20px">--------></div>
       <div class="arrow" style="transform: rotate(180deg);right: 20px; bottom: 0">--------></div>
+      <div class="tag-bottom">
+        <el-button @click="dialogVisible = true">查看提示</el-button>
+      </div>
+      <el-dialog
+          title="提示"
+          :visible.sync="dialogVisible"
+          @close="dialogVisible = false"
+      >
+        <el-tag>1-2</el-tag>
+        <el-tag>1-3</el-tag>
+        <el-tag>1-4</el-tag>
+        <br />
+        <br />
+        <el-tag>2-3</el-tag>
+        <el-tag>2-4</el-tag>
+        <br />
+        <br />
+        <el-tag>3-4</el-tag>
+      </el-dialog>
     </div>
+
   </div>
 </template>
 <script>
@@ -71,6 +92,7 @@ export default {
   name: "kejian",
   data() {
     return {
+      dialogVisible: false,
       currentIdxs: [],
       lines: [],
       bottomLines: [],
@@ -172,6 +194,14 @@ export default {
 };
 </script>
 <style scoped>
+.tag-bottom{
+  position: absolute;
+  bottom: -56px;
+}
+.text-i{
+  font-size: 14px;
+  position: absolute;
+}
 .arrow{
   position: absolute;
   font-size: 38px;
