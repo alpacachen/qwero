@@ -199,7 +199,7 @@ export default {
   bottom: -56px;
 }
 .text-i{
-  font-size: 14px;
+  font-size: 20px;
   position: absolute;
 }
 .arrow{
