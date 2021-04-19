@@ -13,6 +13,7 @@
     "animate4phaser": "^1.0.5",
     "core-js": "^3.6.5",
     "element-ui": "^2.13.2",
+    "eventemitter3": "^4.0.7",
     "html2canvas": "1.0.0-rc.4",
     "imports-loader": "^1.1.0",
     "less-loader": "^6.2.0",
