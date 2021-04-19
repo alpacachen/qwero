@@ -49,6 +49,11 @@ export function watchSticky(element, container) {
         bottom.style.cssText = `position: relative;top: ${parseFloat(stickyValueBottom) + elementHeight}px`
         bottom.classList.add('_sticky_bottom');
         parentElement.insertBefore(bottom, element);
+        // 在顶部增加元素
+        const top = document.createElement('div');
+        top.style.cssText = `position: relative;top: ${parseFloat(stickyValueBottom) + elementHeight}px`
+        top.classList.add('_sticky_top');
+        parentElement.prepend(top);
         const b_bottomCb = ([info]) => {
             const rootInfo = info.rootBounds
             const targetInfo = info.boundingClientRect
@@ -61,20 +66,13 @@ export function watchSticky(element, container) {
         const bottomOb = new IntersectionObserver(b_bottomCb, { root: container || parentElement, threshold: 0 })
         bottomOb.observe(bottom)
 
-        // 在顶部增加元素
-        const top = document.createElement('div');
-        top.style.cssText = `position: relative;top: ${parseFloat(stickyValueBottom) + elementHeight}px`
-        top.classList.add('_sticky_top');
-        parentElement.prepend(top);
-
         // eslint-disable-next-line no-unused-vars
         const b_topCb = ([info]) => {
             const rootInfo = info.rootBounds
             const targetInfo = info.boundingClientRect
-            if (targetInfo.top > rootInfo.top && info.isIntersecting) {
+            if(targetInfo.top < rootInfo.bottom && info.isIntersecting) {
                 fire(element, true)
-            }
-            if (targetInfo.top >= rootInfo.bottom && !info.isIntersecting) {
+            } else if(targetInfo.top >= rootInfo.top && !info.isIntersecting){
                 fire(element, false)
             }
         }
